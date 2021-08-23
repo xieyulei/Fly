@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Fly</string>
+    <string name="IDS_ANDROID_PRACTICE">Android学习</string>
+
+    <!--  Android动画  -->
+    <string name="IDS_BASE_ANIM_FRAGMENT_TITLE">Android动画</string>
+    <string name="IDS_FRAME_ANIM_TITLE">逐帧动画</string>
+    <string name="IDS_FRAME_ANIM_START_BTN_TEXT">开始</string>
+    <string name="IDS_FRAME_ANIM_STOP_BTN_TEXT">结束</string>
+    <string name="IDS_HOME_ANDROID_ANIM_BTN_TEXT">Android动画</string>
+    <string name="IDS_PROPERTY_ANIM_FRAGMENT_TITLE">属性动画</string>
+    <string name="IDS_TWEEN_ANIM_ALPHA_TYPE">透明动画</string>
+    <string name="IDS_TWEEN_ANIM_FRAGMENT_TITLE">补间动画</string>
+    <string name="IDS_TWEEN_ANIM_ROTATE_TYPE">旋转动画</string>
+    <string name="IDS_TWEEN_ANIM_SCALE_TYPE">缩放动画</string>
+    <string name="IDS_TWEEN_ANIM_TRANSLATE_TYPE">平移动画</string>
+
+</resources>
