@@ -28,7 +28,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
 
     @Override
     protected void initListener() {
-        mDataBinding.btnTranlate.setOnClickListener(v -> startTranlateAnimation());
+        mDataBinding.btnTranlate.setOnClickListener(v -> startTranslateAnimation());
         mDataBinding.btnRotate.setOnClickListener(v -> startRotateAnimation());
         mDataBinding.btnScale.setOnClickListener(v -> startScaleAnimation());
         mDataBinding.btnAlpha.setOnClickListener(v -> startAlphaAnimation());
@@ -53,7 +53,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      * fromYDelta:视图在竖直Y轴方向开始移动的起始值
      * toYDelta:视图在竖直Y轴方向开始移动的结束值
      */
-    private void startTranlateAnimation() {
+    private void startTranslateAnimation() {
         Animation translateAnimation;
         if (Utils.coinOfDestiny()) {
             translateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.translate_anim);

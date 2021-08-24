@@ -9,6 +9,9 @@
     <string name="IDS_FRAME_ANIM_STOP_BTN_TEXT">结束</string>
     <string name="IDS_HOME_ANDROID_ANIM_BTN_TEXT">Android动画</string>
     <string name="IDS_PROPERTY_ANIM_FRAGMENT_TITLE">属性动画</string>
+    <string name="IDS_PROPERTY_ANIM_VALUE_OF_INT">ValueAnimator.ofInt</string>
+    <string name="IDS_PROPERTY_ANIM_VALUE_OF_FLOAT">ValueAnimator.ofFloat</string>
+    <string name="IDS_PROPERTY_ANIM_VALUE_OF_OBJECT">ValueAnimator.ofObject</string>
     <string name="IDS_TWEEN_ANIM_ALPHA_TYPE">透明动画</string>
     <string name="IDS_TWEEN_ANIM_FRAGMENT_TITLE">补间动画</string>
     <string name="IDS_TWEEN_ANIM_ROTATE_TYPE">旋转动画</string>

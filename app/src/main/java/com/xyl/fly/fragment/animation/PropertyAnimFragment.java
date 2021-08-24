@@ -1,8 +1,10 @@
 package com.xyl.fly.fragment.animation;
 
+import android.animation.ValueAnimator;
+
 import com.xyl.fly.R;
-import com.xyl.fly.databinding.PropertyFragmentBinding;
 import com.xyl.fly.base.BaseFragment;
+import com.xyl.fly.databinding.PropertyFragmentBinding;
 
 /**
  * PropertyAnimFragment:属性动画练习页
@@ -19,6 +21,71 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
 
     @Override
     protected void initListener() {
+        mDataBinding.btnOfInt.setOnClickListener(v -> startAnimByValueOfInt());
+        mDataBinding.btnOfFloat.setOnClickListener(v -> startAnimByValueOfFloat());
+        mDataBinding.btnOfObject.setOnClickListener(v -> startAnimByValueOfObject());
+    }
+
+    private void startAnimByValueOfInt() {
+        // 1.设置属性的初始值&结束值
+        ValueAnimator animator = ValueAnimator.ofInt(mDataBinding.ivProperty.getLayoutParams().width, 800);
+
+        // 2.设置动画的运行时长
+        animator.setDuration(2000);
+
+        // 3.设置动画延迟播放的时间
+        animator.setStartDelay(10);
+
+        // 4.设置播放次数
+        animator.setRepeatCount(2);
+
+        // 5.设置播放顺序
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+
+        // 6.将属性数值手动赋值给对象的属性，此处是将值赋值给按钮的宽度，设置更新监听器，每次数值发生变化更新都会调用此方法
+        animator.addUpdateListener(animation -> {
+            // 7.每次值发生变化时，将值手动赋值给对象的属性
+            mDataBinding.ivProperty.getLayoutParams().width = (int) animation.getAnimatedValue();
+
+            // 8.刷新视图，重新绘制
+            mDataBinding.ivProperty.requestLayout();
+        });
+        // 9.启动动画
+        animator.start();
+    }
+
+    /**
+     * 与ofInt的区别在于value是float类型与int类型，其余都一样
+     */
+    private void startAnimByValueOfFloat() {
+        // 1.设置属性的初始值&结束值
+        ValueAnimator animator = ValueAnimator.ofInt(mDataBinding.ivProperty.getLayoutParams().width, 0);
+
+        // 2.设置动画的运行时长
+        animator.setDuration(2000);
+
+        // 3.设置动画延迟播放的时间
+        animator.setStartDelay(10);
+
+        // 4.设置播放次数
+        animator.setRepeatCount(2);
+
+        // 5.设置播放顺序
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+
+        // 6.将属性数值手动赋值给对象的属性，此处是将值赋值给按钮的宽度，设置更新监听器，每次数值发生变化更新都会调用此方法
+        animator.addUpdateListener(animation -> {
+            // 7.每次值发生变化时，将值手动赋值给对象的属性
+            mDataBinding.ivProperty.getLayoutParams().width = (int) animation.getAnimatedValue();
+
+            // 8.刷新视图，重新绘制
+            mDataBinding.ivProperty.requestLayout();
+        });
+        // 9.启动动画
+        animator.start();
+    }
+
+    private void startAnimByValueOfObject() {
 
     }
 }

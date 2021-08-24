@@ -10,15 +10,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_property"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/IDS_PROPERTY_ANIM_FRAGMENT_TITLE"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <Button
+            android:id="@+id/btn_of_int"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_INT"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/btn_of_float"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_of_float"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_FLOAT"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/btn_of_object"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_of_int" />
+
+        <Button
+            android:id="@+id/btn_of_object"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_OBJECT"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_property"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_of_float" />
+
+        <ImageView
+            android:id="@+id/iv_property"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/sword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/guideline_property" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
