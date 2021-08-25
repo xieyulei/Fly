@@ -46,4 +46,8 @@ dependencies {
 
     // AndroidUtilsCode
     implementation 'com.blankj:utilcodex:1.30.6'
+
+    // BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
 }

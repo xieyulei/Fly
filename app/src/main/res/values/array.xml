@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="value_anim_list_values">
+        <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_INT</item>
+        <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_FLOAT</item>
+        <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_OBJECT</item>
+    </string-array>
+
+    <string-array name="object_anim_list_values">
+        <item>@string/IDS_ANIM_TRANSLATE_TYPE</item>
+        <item>@string/IDS_ANIM_ROTATE_TYPE</item>
+        <item>@string/IDS_ANIM_SCALE_TYPE</item>
+        <item>@string/IDS_ANIM_ALPHA_TYPE</item>
+    </string-array>
+
+</resources>

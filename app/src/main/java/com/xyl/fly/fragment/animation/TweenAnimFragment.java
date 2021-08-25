@@ -9,7 +9,7 @@ import android.view.animation.TranslateAnimation;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.xyl.fly.R;
-import com.xyl.fly.Utils;
+import com.xyl.fly.util.AppUtils;
 import com.xyl.fly.base.BaseFragment;
 import com.xyl.fly.databinding.TweenFragmentBinding;
 
@@ -55,7 +55,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      */
     private void startTranslateAnimation() {
         Animation translateAnimation;
-        if (Utils.coinOfDestiny()) {
+        if (AppUtils.coinOfDestiny()) {
             translateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.translate_anim);
         } else {
             translateAnimation = new TranslateAnimation(10, ScreenUtils.getScreenWidth(), 10, 10);
@@ -83,7 +83,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
     @SuppressWarnings("SpellCheckingInspection")
     private void startRotateAnimation() {
         Animation rotateAnimation;
-        if (Utils.coinOfDestiny()) {
+        if (AppUtils.coinOfDestiny()) {
             rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_anim);
         } else {
             rotateAnimation = new RotateAnimation(0, 360, mDataBinding.testIv.getPivotX(), mDataBinding.testIv.getPivotY());
@@ -103,7 +103,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      */
     private void startScaleAnimation() {
         Animation scaleAnimation;
-        if (Utils.coinOfDestiny()) {
+        if (AppUtils.coinOfDestiny()) {
             scaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.scale_anim);
         } else {
             scaleAnimation = new ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f, 0, 0);
@@ -131,7 +131,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      */
     private void startAlphaAnimation() {
         Animation alphaAnimation;
-        if (Utils.coinOfDestiny()) {
+        if (AppUtils.coinOfDestiny()) {
             alphaAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.alpha_anim);
         } else {
             alphaAnimation = new AlphaAnimation(1.0f, 0.0f);

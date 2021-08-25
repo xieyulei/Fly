@@ -1,4 +1,4 @@
-package com.xyl.fly;
+package com.xyl.fly.util;
 
 /**
  * Utils
@@ -6,7 +6,7 @@ package com.xyl.fly;
  * @author xyl
  * @date 2021-08-23
  */
-public class Utils {
+public class AppUtils {
 
     /**
      * 随机概率

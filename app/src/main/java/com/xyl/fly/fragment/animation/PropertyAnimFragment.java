@@ -1,11 +1,21 @@
 package com.xyl.fly.fragment.animation;
 
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.xyl.fly.R;
 import com.xyl.fly.base.BaseFragment;
 import com.xyl.fly.databinding.PropertyFragmentBinding;
+import com.xyl.fly.fragment.animation.adapter.RecyclerAdapter;
+import com.xyl.fly.fragment.animation.listener.RecyclerItemCallback;
+import com.xyl.fly.fragment.animation.model.TextItem;
+import com.xyl.fly.util.ArrayUtils;
+
+import java.util.List;
 
 /**
  * PropertyAnimFragment:属性动画练习页
@@ -13,7 +23,7 @@ import com.xyl.fly.databinding.PropertyFragmentBinding;
  * @author xyl
  * @date 2021-08-20
  */
-public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> {
+public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> implements RecyclerItemCallback {
 
     @Override
     protected int getLayoutResId() {
@@ -22,9 +32,46 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
 
     @Override
     protected void initListener() {
-        mDataBinding.btnOfInt.setOnClickListener(v -> startAnimByValueOfInt());
-        mDataBinding.btnOfFloat.setOnClickListener(v -> startAnimByValueOfFloat());
-        mDataBinding.btnOfObject.setOnClickListener(v -> startAnimByValueOfObject());
+        List<TextItem> valueAnimList = ArrayUtils.getPropertyAnimList(requireContext(), R.array.value_anim_list_values);
+        List<TextItem> objectAnimList = ArrayUtils.getPropertyAnimList(requireContext(), R.array.object_anim_list_values);
+
+        RecyclerAdapter valueAnimAdapter = new RecyclerAdapter(requireActivity(), valueAnimList, this);
+        mDataBinding.propertyValueAnimatorRv.setLayoutManager(new LinearLayoutManager(requireContext()));
+        mDataBinding.propertyValueAnimatorRv.setAdapter(valueAnimAdapter);
+
+        RecyclerAdapter objectAnimAdapter = new RecyclerAdapter(requireActivity(), objectAnimList, this);
+        mDataBinding.propertyObjectAnimatorRv.setLayoutManager(new LinearLayoutManager(requireContext()));
+        mDataBinding.propertyObjectAnimatorRv.setAdapter(objectAnimAdapter);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onItemClick(int resId) {
+        switch (resId) {
+            case R.string.IDS_PROPERTY_ANIM_VALUE_OF_INT:
+                startAnimByValueOfInt();
+                break;
+            case R.string.IDS_PROPERTY_ANIM_VALUE_OF_FLOAT:
+                startAnimByValueOfFloat();
+                break;
+            case R.string.IDS_PROPERTY_ANIM_VALUE_OF_OBJECT:
+                startAnimByValueOfObject();
+                break;
+            case R.string.IDS_ANIM_TRANSLATE_TYPE:
+                startTranslateByPropertyAnim();
+                break;
+            case R.string.IDS_ANIM_ROTATE_TYPE:
+                startRotateByPropertyAnim();
+                break;
+            case R.string.IDS_ANIM_SCALE_TYPE:
+                startScaleByPropertyAnim();
+                break;
+            case R.string.IDS_ANIM_ALPHA_TYPE:
+                startAlphaByPropertyAnim();
+                break;
+            default:
+                break;
+        }
     }
 
     private void startAnimByValueOfInt() {
@@ -95,5 +142,30 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
      */
     private void startAnimByValueOfObject() {
         ToastUtils.showShort(R.string.IDS_PROPERTY_ANIM_VALUE_OF_OBJECT_DEMO);
+    }
+
+    private void startTranslateByPropertyAnim() {
+        float currentX = mDataBinding.ivProperty.getX();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "translationX", currentX, 800, currentX);
+        animator.setDuration(3000);
+        animator.start();
+    }
+
+    private void startRotateByPropertyAnim() {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "rotation", 0f, 360f);
+        animator.setDuration(3000);
+        animator.start();
+    }
+
+    private void startScaleByPropertyAnim() {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "scaleX", 1f, 3f, 1f);
+        animator.setDuration(3000);
+        animator.start();
+    }
+
+    private void startAlphaByPropertyAnim() {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "alpha", 1.0f, 0.0f, 1.0f);
+        animator.setDuration(3000);
+        animator.start();
     }
 }
