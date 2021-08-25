@@ -1,0 +1,19 @@
+
+
+ValueAnimator:
+    作用：先改变值，然后手动赋值给对象的属性，从而实现动画（间接对对象属性进行操作）
+    备注：本质是一种值的操作机制
+
+ObjectAnimator:
+    作用：先改变值，然后自动赋值给对象的属性，从而实现动画（直接对对象属性进行操作）
+    备注：采用get/set方法进行自动赋值
+
+AnimatorSet:
+    作用：实现组合动画
+
+ViewPropertyAnimator:
+    作用：采用对对象操作，实现属性动画
+
+addListener:
+    作用：动画监听器，监听动画开始、结束、取消、重复时刻
+    备注：可采用动画适配器（AnimatorListenerAdapter）按需监听动画时刻
