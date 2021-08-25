@@ -20,6 +20,7 @@
     <string name="IDS_PROPERTY_ANIM_OBJECT">ObjectAnimator</string>
     <string name="IDS_PROPERTY_ANIM_OBJECT_VIEW_WRAPPER">ObjectAnimator ViewWrapper</string>
     <string name="IDS_PROPERTY_ANIM_VALUE_OF_OBJECT_DEMO">ofObject实例为绿色圆圈动画</string>
+    <string name="IDS_PROPERTY_ANIM_VIEW_PROPERTY">ViewPropertyAnimator</string>
     <string name="IDS_TWEEN_ANIM_FRAGMENT_TITLE">补间动画</string>
 
 

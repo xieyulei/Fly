@@ -9,9 +9,9 @@ import android.view.animation.TranslateAnimation;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.xyl.fly.R;
-import com.xyl.fly.util.AppUtils;
 import com.xyl.fly.base.BaseFragment;
 import com.xyl.fly.databinding.TweenFragmentBinding;
+import com.xyl.fly.util.AppUtils;
 
 /**
  * TweenAnimFragment:补间动画练习页

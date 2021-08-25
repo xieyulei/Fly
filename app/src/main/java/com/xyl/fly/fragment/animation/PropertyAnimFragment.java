@@ -1,10 +1,13 @@
 package com.xyl.fly.fragment.animation;
 
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +32,8 @@ import java.util.List;
  * @date 2021-08-20
  */
 public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> implements RecyclerItemCallback {
+
+    private static final String TAG = "PropertyAnimFragment";
 
     @Override
     protected int getLayoutResId() {
@@ -66,6 +71,9 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
                 break;
             case R.string.IDS_PROPERTY_ANIM_OBJECT:
                 startAnimByObjectAnimator();
+                break;
+            case R.string.IDS_PROPERTY_ANIM_VIEW_PROPERTY:
+                startAnimByViewProperty();
                 break;
             case R.string.IDS_TWEEN_ANIM_SET:
                 startAnimatorSet();
@@ -191,21 +199,40 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
      * AnimatorSet.before(Animator anim):将现有动画插入到传入的动画之前执行
      */
     private void startAnimatorSet() {
+        AnimatorSet animatorSet;
         if (AppUtils.coinOfDestiny()) {
             float curTranslationX = mDataBinding.btnViewWrapper.getTranslationX();
             ObjectAnimator translation = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "translationX", curTranslationX, 300, curTranslationX);
             ObjectAnimator rotate = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "rotation", 0f, 360f);
             ObjectAnimator alpha = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "alpha", 1.0f, 0.0f, 1.0f);
 
-            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet = new AnimatorSet();
             animatorSet.play(translation).with(rotate).before(alpha);
             animatorSet.setDuration(4000);
-            animatorSet.start();
         } else {
-            AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(requireContext(), R.animator.set_animator);
+            animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(requireContext(), R.animator.set_animator);
             animatorSet.setTarget(mDataBinding.btnViewWrapper);
-            animatorSet.start();
         }
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                Log.e(TAG, "AnimatorSet Start");
+            }
+        });
+        animatorSet.start();
+    }
+
+    /**
+     * 属性动画的本质是对值操作，但java是面向对象的，使用ViewPropertyAnimator
+     * 可认为是属性动画的一种简写方式
+     * 注意：这种方式，动画会自动启动，无需调用start方法，因为新接口中使用了隐式启动动画的功能
+     * 只要将动画定义完成后，动画就会自动启动，该机制对于组合动画也同样有效，只要不断得连续点缀新的方法，
+     * 动画就不会立刻执行，等到所有在ViewPropertyAnimator上设置的方法都执行完毕后，动画就会自动启动
+     * 如果不想使用这一默认机制，也可以显式的调用start方法来启动动画
+     */
+    private void startAnimByViewProperty() {
+        mDataBinding.btnViewWrapper.animate().alpha(0f).x(500).y(500).alpha(1.0f).translationX(-500f).rotation(360);
     }
 
     private void startTranslateByPropertyAnim() {

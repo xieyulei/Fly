@@ -6,6 +6,7 @@
         <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_OBJECT</item>
         <item>@string/IDS_PROPERTY_ANIM_OBJECT</item>
         <item>@string/IDS_TWEEN_ANIM_SET</item>
+        <item>@string/IDS_PROPERTY_ANIM_VIEW_PROPERTY</item>
     </string-array>
 
     <string-array name="object_anim_list_values">
