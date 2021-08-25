@@ -26,7 +26,7 @@
             app:layout_constraintGuide_percent="0.2" />
 
         <Button
-            android:id="@+id/btn_tranlate"
+            android:id="@+id/btn_translate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/IDS_TWEEN_ANIM_TRANSLATE_TYPE"
@@ -44,7 +44,7 @@
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_tranlate"
+            app:layout_constraintStart_toEndOf="@id/btn_translate"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button

@@ -2,6 +2,7 @@ package com.xyl.fly.fragment.animation;
 
 import android.animation.ValueAnimator;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.xyl.fly.R;
 import com.xyl.fly.base.BaseFragment;
 import com.xyl.fly.databinding.PropertyFragmentBinding;
@@ -85,7 +86,14 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
         animator.start();
     }
 
+    /**
+     * 1.定义对象类:Point
+     * 2.自定义估值器:CircleEvaluator
+     * 3.将属性动画作用到自定义View
+     * 4.布局文件中加入自定义View
+     * 5.在主代码中设置显示视图
+     */
     private void startAnimByValueOfObject() {
-
+        ToastUtils.showShort(R.string.IDS_PROPERTY_ANIM_VALUE_OF_OBJECT_DEMO);
     }
 }

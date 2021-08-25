@@ -28,7 +28,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
 
     @Override
     protected void initListener() {
-        mDataBinding.btnTranlate.setOnClickListener(v -> startTranslateAnimation());
+        mDataBinding.btnTranslate.setOnClickListener(v -> startTranslateAnimation());
         mDataBinding.btnRotate.setOnClickListener(v -> startRotateAnimation());
         mDataBinding.btnScale.setOnClickListener(v -> startScaleAnimation());
         mDataBinding.btnAlpha.setOnClickListener(v -> startAlphaAnimation());
@@ -72,7 +72,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      * fromDegress:旋转开始角度，正数顺时针，负数逆时针
      * toDegress:旋转结束时的角度，正数顺时针，负数逆时针
      * pivotX:旋转轴的x坐标
-     * povotY:旋转轴的y坐标
+     * pivotY:旋转轴的y坐标
      * <p>
      * pivotX pivotY,可取值为数字，百分比，或者百分比p
      * 设置为数字时（如50），轴点为View的左上角的原点在x方向和y方向加上50px的点。在Java代码里面设置这个参数的对应参数是Animation.ABSOLUTE。
@@ -80,6 +80,7 @@ public class TweenAnimFragment extends BaseFragment<TweenFragmentBinding> {
      * 设置为百分比p时（如50%p），轴点为View的左上角的原点在x方向加上父控件宽度50%和y方向父控件高度50%的点。在Java代码里面设置这个参数的对应参数是Animation.RELATIVE_TO_PARENT
      * 两个50%表示动画从自身中间开始
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private void startRotateAnimation() {
         Animation rotateAnimation;
         if (Utils.coinOfDestiny()) {
