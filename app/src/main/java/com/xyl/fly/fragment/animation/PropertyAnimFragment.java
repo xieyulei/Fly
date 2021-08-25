@@ -1,5 +1,7 @@
 package com.xyl.fly.fragment.animation;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -15,6 +17,7 @@ import com.xyl.fly.fragment.animation.adapter.RecyclerAdapter;
 import com.xyl.fly.fragment.animation.listener.RecyclerItemCallback;
 import com.xyl.fly.fragment.animation.model.TextItem;
 import com.xyl.fly.fragment.animation.ofobject.CircleSetEvaluator;
+import com.xyl.fly.util.AppUtils;
 import com.xyl.fly.util.ArrayUtils;
 
 import java.util.List;
@@ -63,6 +66,9 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
                 break;
             case R.string.IDS_PROPERTY_ANIM_OBJECT:
                 startAnimByObjectAnimator();
+                break;
+            case R.string.IDS_TWEEN_ANIM_SET:
+                startAnimatorSet();
                 break;
             case R.string.IDS_ANIM_TRANSLATE_TYPE:
                 startTranslateByPropertyAnim();
@@ -172,6 +178,34 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
     public void startAnimByObjectWrapperAnimator() {
         ViewWrapper viewWrapper = new ViewWrapper(mDataBinding.btnViewWrapper);
         ObjectAnimator.ofInt(viewWrapper, "width", 200, 400, 800, 1000).setDuration(3000).start();
+    }
+
+    /**
+     * 组合动画
+     * 单一动画实现效果有限，更多情况下是同时使用多种动画组合
+     * 实现类：AnimatorSet
+     * AnimatorSet.play(Animator anim):播放当前动画
+     * AnimatorSet.after(long delay):将现有动画延迟x毫秒后执行
+     * AnimatorSet.with(Animator anim):将现有动画和传入的动画同时执行
+     * AnimatorSet.after(Animator anim):将现有动画插入到传入的动画之后执行
+     * AnimatorSet.before(Animator anim):将现有动画插入到传入的动画之前执行
+     */
+    private void startAnimatorSet() {
+        if (AppUtils.coinOfDestiny()) {
+            float curTranslationX = mDataBinding.btnViewWrapper.getTranslationX();
+            ObjectAnimator translation = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "translationX", curTranslationX, 300, curTranslationX);
+            ObjectAnimator rotate = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "rotation", 0f, 360f);
+            ObjectAnimator alpha = ObjectAnimator.ofFloat(mDataBinding.btnViewWrapper, "alpha", 1.0f, 0.0f, 1.0f);
+
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.play(translation).with(rotate).before(alpha);
+            animatorSet.setDuration(4000);
+            animatorSet.start();
+        } else {
+            AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(requireContext(), R.animator.set_animator);
+            animatorSet.setTarget(mDataBinding.btnViewWrapper);
+            animatorSet.start();
+        }
     }
 
     private void startTranslateByPropertyAnim() {

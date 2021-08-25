@@ -9,6 +9,7 @@
     <string name="IDS_ANIM_TRANSLATE_TYPE">平移动画</string>
     <string name="IDS_BASE_ANIM_FRAGMENT_TITLE">Android动画</string>
     <string name="IDS_FRAME_ANIM_TITLE">逐帧动画</string>
+    <string name="IDS_TWEEN_ANIM_SET">组合动画</string>
     <string name="IDS_FRAME_ANIM_START_BTN_TEXT">开始</string>
     <string name="IDS_FRAME_ANIM_STOP_BTN_TEXT">结束</string>
     <string name="IDS_HOME_ANDROID_ANIM_BTN_TEXT">Android动画</string>
@@ -20,5 +21,6 @@
     <string name="IDS_PROPERTY_ANIM_OBJECT_VIEW_WRAPPER">ObjectAnimator ViewWrapper</string>
     <string name="IDS_PROPERTY_ANIM_VALUE_OF_OBJECT_DEMO">ofObject实例为绿色圆圈动画</string>
     <string name="IDS_TWEEN_ANIM_FRAGMENT_TITLE">补间动画</string>
+
 
 </resources>
