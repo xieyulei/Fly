@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -45,42 +45,6 @@
             app:layout_constraintStart_toStartOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_of_int"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_INT"-->
-<!--            android:textAllCaps="false"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/btn_of_float"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_of_float"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_FLOAT"-->
-<!--            android:textAllCaps="false"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/btn_of_object"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/btn_of_int" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_of_object"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/IDS_PROPERTY_ANIM_VALUE_OF_OBJECT"-->
-<!--            android:textAllCaps="false"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/guideline1"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/btn_of_float" />-->
-
         <ImageView
             android:id="@+id/iv_property"
             android:layout_width="150dp"
@@ -93,11 +57,29 @@
             tools:ignore="ContentDescription" />
 
         <com.xyl.fly.fragment.animation.ofobject.CircleView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline1" />
+
+        <com.xyl.fly.fragment.animation.ofobject.CircleSetView
+            android:id="@+id/circle_set_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline1" />
+
+        <Button
+            android:id="@+id/btn_view_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IDS_PROPERTY_ANIM_OBJECT_VIEW_WRAPPER"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

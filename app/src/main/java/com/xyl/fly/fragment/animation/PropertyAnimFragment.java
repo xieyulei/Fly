@@ -3,6 +3,7 @@ package com.xyl.fly.fragment.animation;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,6 +14,7 @@ import com.xyl.fly.databinding.PropertyFragmentBinding;
 import com.xyl.fly.fragment.animation.adapter.RecyclerAdapter;
 import com.xyl.fly.fragment.animation.listener.RecyclerItemCallback;
 import com.xyl.fly.fragment.animation.model.TextItem;
+import com.xyl.fly.fragment.animation.ofobject.CircleSetEvaluator;
 import com.xyl.fly.util.ArrayUtils;
 
 import java.util.List;
@@ -42,6 +44,8 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
         RecyclerAdapter objectAnimAdapter = new RecyclerAdapter(requireActivity(), objectAnimList, this);
         mDataBinding.propertyObjectAnimatorRv.setLayoutManager(new LinearLayoutManager(requireContext()));
         mDataBinding.propertyObjectAnimatorRv.setAdapter(objectAnimAdapter);
+
+        mDataBinding.btnViewWrapper.setOnClickListener(v -> startAnimByObjectWrapperAnimator());
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -56,6 +60,9 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
                 break;
             case R.string.IDS_PROPERTY_ANIM_VALUE_OF_OBJECT:
                 startAnimByValueOfObject();
+                break;
+            case R.string.IDS_PROPERTY_ANIM_OBJECT:
+                startAnimByObjectAnimator();
                 break;
             case R.string.IDS_ANIM_TRANSLATE_TYPE:
                 startTranslateByPropertyAnim();
@@ -144,6 +151,29 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
         ToastUtils.showShort(R.string.IDS_PROPERTY_ANIM_VALUE_OF_OBJECT_DEMO);
     }
 
+    /**
+     * 1.设置自定义对象、背景颜色、属性、估值器
+     * 2.根据颜色估值器不断的改变值
+     * 3.调用set设置背景颜色的属性值
+     * 4.调用invalidate刷新视图，即调用onDraw重新绘制，从而实现动画效果
+     */
+    private void startAnimByObjectAnimator() {
+        ObjectAnimator animator = ObjectAnimator.ofObject(mDataBinding.circleSetView, "color", new CircleSetEvaluator(),
+                "#0000FF", "#FF0000");
+        animator.setDuration(3000);
+        animator.start();
+    }
+
+    /**
+     * 当view的set方法不是设置属性或者根本就没有set、get方法时使用
+     * 给类包装原始对象，通过包装原始动画对象，间接给对象加上该属性的get、set方法
+     * 本质上是采用了设计模式中的装饰模式，即通过包装类从而扩展对象的功能
+     */
+    public void startAnimByObjectWrapperAnimator() {
+        ViewWrapper viewWrapper = new ViewWrapper(mDataBinding.btnViewWrapper);
+        ObjectAnimator.ofInt(viewWrapper, "width", 200, 400, 800, 1000).setDuration(3000).start();
+    }
+
     private void startTranslateByPropertyAnim() {
         float currentX = mDataBinding.ivProperty.getX();
         ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "translationX", currentX, 800, currentX);
@@ -167,5 +197,22 @@ public class PropertyAnimFragment extends BaseFragment<PropertyFragmentBinding> 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mDataBinding.ivProperty, "alpha", 1.0f, 0.0f, 1.0f);
         animator.setDuration(3000);
         animator.start();
+    }
+
+    public static class ViewWrapper {
+        private final View mTarget;
+
+        public ViewWrapper(View target) {
+            mTarget = target;
+        }
+
+        public int getWidth() {
+            return mTarget.getLayoutParams().width;
+        }
+
+        public void setWidth(int width) {
+            mTarget.getLayoutParams().width = width;
+            mTarget.requestLayout();
+        }
     }
 }

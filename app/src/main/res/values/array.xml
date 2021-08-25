@@ -4,6 +4,7 @@
         <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_INT</item>
         <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_FLOAT</item>
         <item>@string/IDS_PROPERTY_ANIM_VALUE_OF_OBJECT</item>
+        <item>@string/IDS_PROPERTY_ANIM_OBJECT</item>
     </string-array>
 
     <string-array name="object_anim_list_values">
